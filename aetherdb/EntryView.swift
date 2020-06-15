@@ -16,16 +16,24 @@ struct EntryView: View {
     @ObservedObject var linkQueryResults: RethinkQueryResultCollection = RethinkQueryResultCollection(entries: [])
     var simpleKeys: [String] = []
     var numericKeys: [String] = []
+    var documentKeys: [String] = []
     var otherKeys: [String] = []
+    var name: String = ""
     
     init(entry: ReDocument) {
+        self.init(entry: entry, name: entry["name"] as! String)
+    }
+    
+    init(entry: ReDocument, name: String) {
         self.entry = entry
         keys = entry.filter{$0.key != "id" && $0.key != "$type" && $0.key != "description" && $0.key != "name"}.map{$0.key}
         linkKeys = keys.filter{entry[$0] is String && UUID(uuidString: entry[$0] as! String) != nil}
         linkQueryResults = RethinkQueryResultCollection(entries: linkKeys.map{RethinkConnection.getEntry(self.entry[$0] as! String)})
         simpleKeys = keys.filter{entry[$0] is String && !(linkKeys.contains($0))}
         numericKeys = keys.filter{entry[$0] is NSNumber}
-        otherKeys = keys.filter{!(linkKeys.contains($0)) && !(simpleKeys.contains($0)) && !(numericKeys.contains($0))}
+        documentKeys = keys.filter{entry[$0] is ReDocument}
+        otherKeys = keys.filter{!(linkKeys.contains($0)) && !(simpleKeys.contains($0)) && !(numericKeys.contains($0)) && !(documentKeys.contains($0))}
+        self.name = name
     }
     
     var body: some View {
@@ -39,6 +47,11 @@ struct EntryView: View {
                     EntryPropertyView(name: self.linkKeys[index], value: self.linkQueryResults.entries[index].entry["name"] as! String)
                 }
             }
+            ForEach(documentKeys.sorted(), id: \.self) { key in
+                return NavigationLink(destination: EntryView(entry: self.entry[key] as! ReDocument, name: key)) {
+                    SimpleListEntry(name: key)
+                }
+            }
             ForEach(numericKeys.sorted(), id: \.self) {key in
                 EntryPropertyView(name: key, value: (self.entry[key] as! NSNumber).description)
             }
@@ -49,7 +62,7 @@ struct EntryView: View {
                 SimpleListEntry(name: key)
             }
         }
-        .navigationBarTitle(Text(entry["name"] as! String))
+        .navigationBarTitle(Text(name))
     }
 }
 
