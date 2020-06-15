@@ -33,6 +33,20 @@ class RethinkQueryResults: ObservableObject {
     }
 }
 
+class RethinkQueryResult: ObservableObject {
+    @Published var entry: ReDocument
+    init(){
+        self.entry = ["name":"Unavailable"]
+    }
+}
+
+class RethinkQueryResultCollection: ObservableObject {
+    @Published var entries: [RethinkQueryResult]
+    init(entries: [RethinkQueryResult]) {
+        self.entries = entries
+    }
+}
+
 class RethinkConnection {
     static let Url = URL(string: "rethinkdb://asgard.gamecult.games:28015")!
     
@@ -48,6 +62,21 @@ class RethinkConnection {
             }
         }
         return types
+    }
+    
+    static func getEntry(_ guid: String) -> RethinkQueryResult {
+        //print("Querying for entry with id: \(guid)")
+        var result = RethinkQueryResult()
+        R.connect(Url) { (err, connection) in
+            assert(err==nil, "Connection error: \(String(describing: err))")
+            
+            R.db("Aetheria").table("Items").get(guid).run(connection) { response in
+                DispatchQueue.main.async(){
+                    result.entry = response.value as? ReDocument ?? ["name":"Not Found"]
+                }
+            }
+        }
+        return result
     }
     
     static func getItemsOfType(_ type: String) -> RethinkQueryResults {

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ItemList: View {
     var listType: String
-    var queryResults: RethinkQueryResults
+    @ObservedObject var queryResults: RethinkQueryResults
     
     init(listType: String) {
         self.listType = listType
@@ -19,8 +19,11 @@ struct ItemList: View {
     
     var body: some View {
         List(queryResults.entries) { entry in
-            SimpleListEntry(name: entry.doc["name"] as! String)
+            NavigationLink(destination: EntryView(entry: entry.doc)) {
+                SimpleListEntry(name: entry.doc["name"] as! String)
+            }
         }
+        .navigationBarTitle(Text(listType))
     }
     
 }

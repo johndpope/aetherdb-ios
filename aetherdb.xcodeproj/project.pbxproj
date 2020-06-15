@@ -11,6 +11,8 @@
 		4E7945772495382A00E1D8A3 /* SimpleListEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7945762495382A00E1D8A3 /* SimpleListEntry.swift */; };
 		4E79457924953A4700E1D8A3 /* RethinkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E79457824953A4700E1D8A3 /* RethinkConnection.swift */; };
 		4E7945A124954ED900E1D8A3 /* Rethink in Frameworks */ = {isa = PBXBuildFile; productRef = 4E7945A024954ED900E1D8A3 /* Rethink */; };
+		4ED76EB62496CFC300C1D819 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED76EB52496CFC300C1D819 /* EntryView.swift */; };
+		4ED76EB82496DBE800C1D819 /* EntryPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED76EB72496DBE800C1D819 /* EntryPropertyView.swift */; };
 		4EF1D3F7249117860054FC7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1D3F6249117860054FC7A /* AppDelegate.swift */; };
 		4EF1D3F9249117860054FC7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1D3F8249117860054FC7A /* SceneDelegate.swift */; };
 		4EF1D3FB249117860054FC7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF1D3FA249117860054FC7A /* ContentView.swift */; };
@@ -23,6 +25,8 @@
 		4E6AC1FB2495A324005C74E1 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		4E7945762495382A00E1D8A3 /* SimpleListEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleListEntry.swift; sourceTree = "<group>"; };
 		4E79457824953A4700E1D8A3 /* RethinkConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RethinkConnection.swift; sourceTree = "<group>"; };
+		4ED76EB52496CFC300C1D819 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
+		4ED76EB72496DBE800C1D819 /* EntryPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPropertyView.swift; sourceTree = "<group>"; };
 		4EF1D3F3249117860054FC7A /* aetherdb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aetherdb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF1D3F6249117860054FC7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EF1D3F8249117860054FC7A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +85,9 @@
 				4EF1D404249117880054FC7A /* Info.plist */,
 				4EF1D3FE249117880054FC7A /* Preview Content */,
 				4E7945762495382A00E1D8A3 /* SimpleListEntry.swift */,
+				4ED76EB72496DBE800C1D819 /* EntryPropertyView.swift */,
 				4E79457824953A4700E1D8A3 /* RethinkConnection.swift */,
+				4ED76EB52496CFC300C1D819 /* EntryView.swift */,
 			);
 			path = aetherdb;
 			sourceTree = "<group>";
@@ -175,6 +181,8 @@
 				4EF1D3F9249117860054FC7A /* SceneDelegate.swift in Sources */,
 				4E7945772495382A00E1D8A3 /* SimpleListEntry.swift in Sources */,
 				4E79457924953A4700E1D8A3 /* RethinkConnection.swift in Sources */,
+				4ED76EB82496DBE800C1D819 /* EntryPropertyView.swift in Sources */,
+				4ED76EB62496CFC300C1D819 /* EntryView.swift in Sources */,
 				4E6AC1FC2495A324005C74E1 /* ItemList.swift in Sources */,
 				4EF1D3FB249117860054FC7A /* ContentView.swift in Sources */,
 			);
